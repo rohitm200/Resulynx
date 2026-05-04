@@ -3,18 +3,12 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from .forms import RegisterForm, ResumeForm
 from .models import Resume
+from .utils import extract_text, calculate_score
 
-# Simple fake "AI scoring"
-def calculate_score(filename):
-    score = 50
-    if "python" in filename.lower():
-        score += 20
-    if "ai" in filename.lower():
-        score += 20
-    return min(score, 100)
 
 def home(request):
     return render(request, 'index.html')
+
 
 def register(request):
     form = RegisterForm(request.POST or None)
@@ -24,20 +18,30 @@ def register(request):
         return redirect('dashboard')
     return render(request, 'register.html', {'form': form})
 
+
 @login_required
 def dashboard(request):
     resumes = Resume.objects.filter(user=request.user)
 
     if request.method == 'POST':
-        form = ResumeForm(request.POST, request.FILES)
-        if form.is_valid():
-            resume = form.save(commit=False)
-            resume.user = request.user
-            resume.score = calculate_score(resume.file.name)
+        file = request.FILES.get('file')
+
+        if file:
+            text = extract_text(file)
+            score, skills = calculate_score(text)
+
+            resume = Resume.objects.create(
+                user=request.user,
+                file=file,
+                score=score
+            )
+
+            resume.skills = ",".join(skills)
             resume.save()
+
             return redirect('dashboard')
-    else:
-        form = ResumeForm()
+
+    form = ResumeForm()
 
     scores = [r.score for r in resumes]
 

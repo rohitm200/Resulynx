@@ -155,6 +155,19 @@ body {
 .score.60, .score-60 { background: orange; }
 .score.40, .score-40 { background: red; }
 
+/* Badges */
+.badge {
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: white;
+}
+
+.score-90 { background: #22c55e; }
+.score-70 { background: #3b82f6; }
+.score-50 { background: #f59e0b; }
+.score-30 { background: #ef4444; }
+
 /* Drag area visual */
 #drop-area {
     border: 2px dashed rgba(255,255,255,0.08);

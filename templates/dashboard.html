@@ -5,12 +5,10 @@
     <h1>Dashboard</h1>
 
     <div class="upload-box" id="drop-area">
-        <h3>Drag & Drop Resume</h3>
-        <p>or click to upload</p>
-
+        <p>Drag & Drop Resume</p>
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <input type="file" name="file" id="fileInput" hidden>
+            <input type="file" name="file" id="fileInput">
             <button class="btn-primary">Upload</button>
         </form>
     </div>
@@ -19,16 +17,32 @@
         <h2>Your Resumes</h2>
         {% if resumes %}
         <table>
+        <tr>
+            <th>File</th>
+            <th>Score</th>
+            <th>Skills</th>
+            <th>Preview</th>
+        </tr>
         {% for r in resumes %}
-            <tr>
-                <td>{{ r.file.name }}</td>
-                <td>
-                    <span class="score {{ r.score }} score-{{ r.score }}">
-                        {{ r.score }}
-                    </span>
-                </td>
-                <td><a href="{{ r.file.url }}">View</a></td>
-            </tr>
+        <tr>
+            <td>{{ r.file.name }}</td>
+
+            <td>
+                {% if r.score >= 90 %}
+                    <span class="badge score-90">{{ r.score }}</span>
+                {% elif r.score >= 70 %}
+                    <span class="badge score-70">{{ r.score }}</span>
+                {% elif r.score >= 50 %}
+                    <span class="badge score-50">{{ r.score }}</span>
+                {% else %}
+                    <span class="badge score-30">{{ r.score }}</span>
+                {% endif %}
+            </td>
+
+            <td>{{ r.skills }}</td>
+
+            <td><a href="{{ r.file.url }}">View</a></td>
+        </tr>
         {% endfor %}
         </table>
         {% else %}
@@ -43,17 +57,16 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-    const data = {
-        labels: {{ scores|safe }},
-        datasets: [{
-            label: 'Resume Scores',
-            data: {{ scores|safe }},
-        }]
-    };
-
     new Chart(document.getElementById('chart'), {
         type: 'bar',
-        data: data
+        data: {
+            labels: {{ scores|safe }},
+            datasets: [{
+                label: 'Resume Scores',
+                data: {{ scores|safe }},
+                backgroundColor: '#38bdf8'
+            }]
+        }
     });
     </script>
 </div>

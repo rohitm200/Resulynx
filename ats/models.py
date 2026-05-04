@@ -6,6 +6,7 @@ class Resume(models.Model):
     file = models.FileField(upload_to='resumes/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
     score = models.IntegerField(default=0)
+    skills = models.TextField(blank=True)
 
     def __str__(self):
         return self.file.name
