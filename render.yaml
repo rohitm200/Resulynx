@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: resulynx
+    env: python
+    plan: free
+    buildCommand: ./build.sh
+    startCommand: gunicorn resulynx.wsgi:application --bind 0.0.0.0:$PORT
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: resulynx.settings
+    staticPublishPath: staticfiles
