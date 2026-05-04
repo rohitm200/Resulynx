@@ -8,15 +8,48 @@
         <h3>Upload Resume</h3>
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <input type="file" name="resume">
+            {{ form }}
             <button class="btn-primary">Upload</button>
         </form>
     </div>
 
     <div class="results">
-        <h3>Results</h3>
-        <p>No resumes analyzed yet.</p>
+        <h2>Your Resumes</h2>
+        {% if resumes %}
+        <ul>
+        {% for r in resumes %}
+            <li>
+                {{ r.file.name }} - Score: {{ r.score }}
+                <a href="{{ r.file.url }}">View</a>
+            </li>
+        {% endfor %}
+        </ul>
+        {% else %}
+        <p>No resumes uploaded yet.</p>
+        {% endif %}
     </div>
+
+    <div class="chart-container">
+        <h3>Resume Scores Chart</h3>
+        <canvas id="chart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+    const data = {
+        labels: {{ scores|safe }},
+        datasets: [{
+            label: 'Resume Scores',
+            data: {{ scores|safe }},
+        }]
+    };
+
+    new Chart(document.getElementById('chart'), {
+        type: 'bar',
+        data: data
+    });
+    </script>
 </div>
 
 {% endblock %}
+
