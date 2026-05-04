@@ -1,21 +1,27 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Resulynx</title>
-    <style>
-      body { font-family: Arial, sans-serif; margin: 40px; }
-      .container { max-width: 800px; margin: auto; }
-      h1 { color: #2b6cb0; }
-      .note { color: #4a5568; }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <h1>Resulynx</h1>
-      <p class="note">Django is running — this is the UI placeholder.</p>
-      <p><a href="/admin/">Admin site</a></p>
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="hero">
+    <h1>Next-Gen AI Hiring Platform</h1>
+    <p>Smart resume analysis, intelligent ranking, and seamless hiring</p>
+    <a href="/dashboard/" class="btn-primary">Start Now</a>
+</section>
+
+<section class="features">
+    <div class="card">
+        <h3>📄 Resume Parsing</h3>
+        <p>Extract structured data from resumes instantly</p>
     </div>
-  </body>
-</html>
+
+    <div class="card">
+        <h3>🤖 AI Matching</h3>
+        <p>Match candidates with job roles intelligently</p>
+    </div>
+
+    <div class="card">
+        <h3>📊 Smart Ranking</h3>
+        <p>Rank candidates based on skills and experience</p>
+    </div>
+</section>
+
+{% endblock %}

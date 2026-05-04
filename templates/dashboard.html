@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="dashboard">
+    <h1>Dashboard</h1>
+
+    <div class="upload-box">
+        <h3>Upload Resume</h3>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="resume">
+            <button class="btn-primary">Upload</button>
+        </form>
+    </div>
+
+    <div class="results">
+        <h3>Results</h3>
+        <p>No resumes analyzed yet.</p>
+    </div>
+</div>
+
+{% endblock %}
