@@ -4,11 +4,13 @@
 <div class="dashboard">
     <h1>Dashboard</h1>
 
-    <div class="upload-box">
-        <h3>Upload Resume</h3>
+    <div class="upload-box" id="drop-area">
+        <h3>Drag & Drop Resume</h3>
+        <p>or click to upload</p>
+
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ form }}
+            <input type="file" name="file" id="fileInput" hidden>
             <button class="btn-primary">Upload</button>
         </form>
     </div>
@@ -16,14 +18,19 @@
     <div class="results">
         <h2>Your Resumes</h2>
         {% if resumes %}
-        <ul>
+        <table>
         {% for r in resumes %}
-            <li>
-                {{ r.file.name }} - Score: {{ r.score }}
-                <a href="{{ r.file.url }}">View</a>
-            </li>
+            <tr>
+                <td>{{ r.file.name }}</td>
+                <td>
+                    <span class="score {{ r.score }} score-{{ r.score }}">
+                        {{ r.score }}
+                    </span>
+                </td>
+                <td><a href="{{ r.file.url }}">View</a></td>
+            </tr>
         {% endfor %}
-        </ul>
+        </table>
         {% else %}
         <p>No resumes uploaded yet.</p>
         {% endif %}

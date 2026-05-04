@@ -88,3 +88,76 @@ body {
     from {opacity: 0; transform: translateY(20px);}
     to {opacity: 1; transform: translateY(0);}
 }
+
+/* AUTH */
+.auth-container {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+}
+
+.auth-card {
+    background: rgba(255,255,255,0.05);
+    padding: 40px;
+    border-radius: 16px;
+    width: 320px;
+    backdrop-filter: blur(10px);
+    animation: fadeIn 0.8s ease;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    border-radius: 8px;
+}
+
+.input-group label {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+/* BUTTON */
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #6366f1, #06b6d4);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+}
+
+/* SCORE */
+.score {
+    padding: 5px 10px;
+    border-radius: 6px;
+    color: white;
+}
+
+.score.80, .score-80 { background: green; }
+.score.60, .score-60 { background: orange; }
+.score.40, .score-40 { background: red; }
+
+/* Drag area visual */
+#drop-area {
+    border: 2px dashed rgba(255,255,255,0.08);
+    padding: 20px;
+    border-radius: 12px;
+}
