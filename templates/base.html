@@ -1,23 +1,38 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>ResuLynx</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <title>{% block title %}ResuLynx{% endblock %}</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <nav class="navbar">
-    <div class="logo">ResuLynx</div>
+    <a class="logo" href="/">
+        <span class="logo-mark">R</span>
+        <span>ResuLynx</span>
+    </a>
     <div class="nav-links">
         <a href="/">Home</a>
         <a href="/dashboard/">Dashboard</a>
+        {% if user.is_authenticated %}
+            <form method="post" action="/logout/" class="logout-form">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+        {% else %}
+            <a href="/login/">Login</a>
+            <a href="/register/" class="nav-cta">Sign up</a>
+        {% endif %}
     </div>
 </nav>
 
-{% block content %}{% endblock %}
+<main>
+    {% block content %}{% endblock %}
+</main>
 
 <script src="{% static 'js/script.js' %}"></script>
 </body>

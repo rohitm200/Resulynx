@@ -1,26 +1,70 @@
 {% extends 'base.html' %}
+{% block title %}ResuLynx | AI Resume Intelligence{% endblock %}
 {% block content %}
 
 <section class="hero">
-    <h1>Next-Gen AI Hiring Platform</h1>
-    <p>Smart resume analysis, intelligent ranking, and seamless hiring</p>
-    <a href="/dashboard/" class="btn-primary">Start Now</a>
+    <div class="hero-copy">
+        <p class="eyebrow">AI resume intelligence for faster shortlists</p>
+        <h1>Rank every resume with clarity, speed, and confidence.</h1>
+        <p class="hero-text">ResuLynx turns raw resume uploads into structured skills, match scores, and readable hiring signals so teams can move from pile to priority.</p>
+        <div class="hero-actions">
+            <a href="/dashboard/" class="btn-primary">Analyze resumes</a>
+            <a href="/register/" class="btn-secondary">Create account</a>
+        </div>
+    </div>
+
+    <div class="hero-panel" aria-label="Resume scoring preview">
+        <div class="panel-header">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="candidate-card top">
+            <div>
+                <strong>Senior Django Engineer</strong>
+                <p>Python, APIs, PostgreSQL</p>
+            </div>
+            <span class="score-pill high">94</span>
+        </div>
+        <div class="candidate-card">
+            <div>
+                <strong>Product Analyst</strong>
+                <p>SQL, dashboards, hiring ops</p>
+            </div>
+            <span class="score-pill mid">78</span>
+        </div>
+        <div class="mini-chart">
+            <span style="height: 72%"></span>
+            <span style="height: 48%"></span>
+            <span style="height: 84%"></span>
+            <span style="height: 60%"></span>
+            <span style="height: 92%"></span>
+        </div>
+    </div>
 </section>
 
 <section class="features">
-    <div class="card">
-        <h3>📄 Resume Parsing</h3>
-        <p>Extract structured data from resumes instantly</p>
+    <div class="section-heading">
+        <p class="eyebrow">Built around the hiring workflow</p>
+        <h2>Everything useful, surfaced where recruiters need it.</h2>
     </div>
 
-    <div class="card">
-        <h3>🤖 AI Matching</h3>
-        <p>Match candidates with job roles intelligently</p>
-    </div>
+    <div class="feature-grid">
+        <div class="card">
+            <span class="feature-icon">01</span>
+            <h3>Resume Parsing</h3>
+            <p>Extract readable skills and signals from uploaded resumes without manual review.</p>
+        </div>
 
-    <div class="card">
-        <h3>📊 Smart Ranking</h3>
-        <p>Rank candidates based on skills and experience</p>
+        <div class="card">
+            <span class="feature-icon">02</span>
+            <h3>AI Matching</h3>
+            <p>Score each profile against the qualities that matter most for the role.</p>
+        </div>
+
+        <div class="card">
+            <span class="feature-icon">03</span>
+            <h3>Smart Ranking</h3>
+            <p>Compare candidates in a calm dashboard with score badges, skills, and previews.</p>
+        </div>
     </div>
 </section>
 

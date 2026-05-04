@@ -1,14 +1,20 @@
 {% extends 'base.html' %}
+{% block title %}Register | ResuLynx{% endblock %}
 {% block content %}
 
-<div class="form-container">
-    <h2>Register</h2>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Sign Up</button>
-    </form>
-    <p><a href="/login/">Already have an account? Login</a></p>
+<div class="auth-container">
+    <div class="auth-card auth-card-wide">
+        <p class="eyebrow">Start hiring smarter</p>
+        <h2>Create your account</h2>
+        <p class="auth-subtitle">Set up a workspace for resume uploads and scoring.</p>
+
+        <form method="POST" class="stacked-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn-primary" type="submit">Sign up</button>
+        </form>
+        <p>Already have an account? <a href="/login/">Login</a></p>
+    </div>
 </div>
 
 {% endblock %}

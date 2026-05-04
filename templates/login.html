@@ -1,26 +1,31 @@
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% extends 'base.html' %}
+{% block title %}Login | ResuLynx{% endblock %}
+{% block content %}
 
 <div class="auth-container">
     <div class="auth-card">
-        <h2>Welcome Back</h2>
+        <p class="eyebrow">Secure access</p>
+        <h2>Welcome back</h2>
+        <p class="auth-subtitle">Sign in to review resumes and candidate scores.</p>
 
         <form method="POST">
             {% csrf_token %}
 
             <div class="input-group">
-                {{ form.username }}
                 <label>Username</label>
+                {{ form.username }}
             </div>
 
             <div class="input-group">
-                {{ form.password }}
                 <label>Password</label>
+                {{ form.password }}
             </div>
 
-            <button class="btn-primary">Login</button>
+            <button class="btn-primary" type="submit">Login</button>
         </form>
 
         <p>New user? <a href="/register/">Create account</a></p>
     </div>
 </div>
+
+{% endblock %}

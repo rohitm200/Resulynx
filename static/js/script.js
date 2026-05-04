@@ -1,33 +1,48 @@
-window.addEventListener("scroll", () => {
-    document.querySelectorAll(".card").forEach(card => {
-        let position = card.getBoundingClientRect().top;
-        let screenHeight = window.innerHeight;
+const revealCards = () => {
+    document.querySelectorAll(".card").forEach((card) => {
+        const position = card.getBoundingClientRect().top;
+        const screenHeight = window.innerHeight;
 
         if (position < screenHeight - 100) {
             card.style.opacity = "1";
             card.style.transform = "translateY(0)";
         }
     });
-});
+};
+
+window.addEventListener("scroll", revealCards);
+window.addEventListener("load", revealCards);
 
 const dropArea = document.getElementById("drop-area");
+const fileInput = document.getElementById("fileInput");
+const fileName = document.getElementById("fileName");
 
-if (dropArea) {
-    dropArea.addEventListener("click", () => {
-        document.getElementById("fileInput").click();
+const showFileName = () => {
+    if (!fileInput || !fileName) return;
+    fileName.textContent = fileInput.files.length ? fileInput.files[0].name : "No file selected";
+};
+
+if (dropArea && fileInput) {
+    dropArea.addEventListener("click", (event) => {
+        if (event.target.closest("button") || event.target.closest("input")) return;
+        fileInput.click();
     });
 
-    dropArea.addEventListener("dragover", (e) => {
-        e.preventDefault();
-        dropArea.style.border = "2px dashed #38bdf8";
+    dropArea.addEventListener("dragover", (event) => {
+        event.preventDefault();
+        dropArea.classList.add("is-dragging");
     });
 
     dropArea.addEventListener("dragleave", () => {
-        dropArea.style.border = "2px dashed rgba(255,255,255,0.08)";
+        dropArea.classList.remove("is-dragging");
     });
 
-    dropArea.addEventListener("drop", (e) => {
-        e.preventDefault();
-        document.getElementById("fileInput").files = e.dataTransfer.files;
+    dropArea.addEventListener("drop", (event) => {
+        event.preventDefault();
+        dropArea.classList.remove("is-dragging");
+        fileInput.files = event.dataTransfer.files;
+        showFileName();
     });
+
+    fileInput.addEventListener("change", showFileName);
 }

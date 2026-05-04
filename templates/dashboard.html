@@ -1,75 +1,130 @@
 {% extends 'base.html' %}
+{% block title %}Dashboard | ResuLynx{% endblock %}
 {% block content %}
 
 <div class="dashboard">
-    <h1>Dashboard</h1>
+    <section class="page-header">
+        <div>
+            <p class="eyebrow">Workspace</p>
+            <h1>Resume dashboard</h1>
+            <p>Upload resumes, review scoring signals, and open candidate files from one focused view.</p>
+        </div>
+        <div class="stats-strip">
+            <div>
+                <span>{{ resumes|length }}</span>
+                <small>Resumes</small>
+            </div>
+            <div>
+                <span>{{ scores|length }}</span>
+                <small>Scored</small>
+            </div>
+        </div>
+    </section>
 
     <div class="upload-box" id="drop-area">
-        <p>Drag & Drop Resume</p>
+        <div class="upload-icon">+</div>
+        <div>
+            <h2>Drop a resume here</h2>
+            <p>PDF, DOC, and DOCX files are ready for analysis.</p>
+        </div>
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <input type="file" name="file" id="fileInput">
-            <button class="btn-primary">Upload</button>
+            <input type="file" name="file" id="fileInput" class="file-input">
+            <button class="btn-primary" type="submit">Upload resume</button>
         </form>
+        <p class="file-name" id="fileName">No file selected</p>
     </div>
 
-    <div class="results">
-        <h2>Your Resumes</h2>
-        {% if resumes %}
-        <table>
-        <tr>
-            <th>File</th>
-            <th>Score</th>
-            <th>Skills</th>
-            <th>Preview</th>
-        </tr>
-        {% for r in resumes %}
-        <tr>
-            <td>{{ r.file.name }}</td>
+    <div class="dashboard-grid">
+        <section class="results">
+            <div class="section-title-row">
+                <div>
+                    <p class="eyebrow">Candidate library</p>
+                    <h2>Your resumes</h2>
+                </div>
+            </div>
+            {% if resumes %}
+            <div class="table-shell">
+                <table>
+                    <tr>
+                        <th>File</th>
+                        <th>Score</th>
+                        <th>Skills</th>
+                        <th>Preview</th>
+                    </tr>
+                    {% for r in resumes %}
+                    <tr>
+                        <td class="file-cell">{{ r.file.name }}</td>
+                        <td>
+                            {% if r.score >= 90 %}
+                                <span class="badge score-90">{{ r.score }}</span>
+                            {% elif r.score >= 70 %}
+                                <span class="badge score-70">{{ r.score }}</span>
+                            {% elif r.score >= 50 %}
+                                <span class="badge score-50">{{ r.score }}</span>
+                            {% else %}
+                                <span class="badge score-30">{{ r.score }}</span>
+                            {% endif %}
+                        </td>
+                        <td class="skills-cell">{{ r.skills|default:"Skills pending" }}</td>
+                        <td><a class="table-link" href="{{ r.file.url }}">View</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            {% else %}
+            <div class="empty-state">
+                <h3>No resumes yet</h3>
+                <p>Upload your first resume to see scoring, extracted skills, and chart trends.</p>
+            </div>
+            {% endif %}
+        </section>
 
-            <td>
-                {% if r.score >= 90 %}
-                    <span class="badge score-90">{{ r.score }}</span>
-                {% elif r.score >= 70 %}
-                    <span class="badge score-70">{{ r.score }}</span>
-                {% elif r.score >= 50 %}
-                    <span class="badge score-50">{{ r.score }}</span>
-                {% else %}
-                    <span class="badge score-30">{{ r.score }}</span>
-                {% endif %}
-            </td>
-
-            <td>{{ r.skills }}</td>
-
-            <td><a href="{{ r.file.url }}">View</a></td>
-        </tr>
-        {% endfor %}
-        </table>
-        {% else %}
-        <p>No resumes uploaded yet.</p>
-        {% endif %}
-    </div>
-
-    <div class="chart-container">
-        <h3>Resume Scores Chart</h3>
-        <canvas id="chart"></canvas>
+        <section class="chart-container">
+            <p class="eyebrow">Score spread</p>
+            <h3>Resume scores</h3>
+            <canvas id="chart"></canvas>
+        </section>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-    new Chart(document.getElementById('chart'), {
-        type: 'bar',
-        data: {
-            labels: {{ scores|safe }},
-            datasets: [{
-                label: 'Resume Scores',
-                data: {{ scores|safe }},
-                backgroundColor: '#38bdf8'
-            }]
-        }
-    });
+    const chartEl = document.getElementById('chart');
+    if (chartEl) {
+        new Chart(chartEl, {
+            type: 'bar',
+            data: {
+                labels: {{ scores|safe }},
+                datasets: [{
+                    label: 'Resume Scores',
+                    data: {{ scores|safe }},
+                    borderRadius: 8,
+                    backgroundColor: ['#0f766e', '#2563eb', '#ca8a04', '#dc2626'],
+                    borderSkipped: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#64748b' }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: { color: '#e2e8f0' },
+                        ticks: { color: '#64748b' }
+                    }
+                }
+            }
+        });
+    }
     </script>
 </div>
 
 {% endblock %}
-
