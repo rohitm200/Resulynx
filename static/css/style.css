@@ -1136,12 +1136,13 @@ th {
 }
 
 .team-card img {
-    width: 128px;
-    height: 128px;
+    width: 148px;
+    height: 148px;
     margin: 0 auto 24px;
     border: 4px solid #fff;
     border-radius: 50%;
     object-fit: cover;
+    object-position: center;
     box-shadow: 0 12px 28px rgba(17, 24, 39, 0.12);
 }
 
