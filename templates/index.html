@@ -1,71 +1,257 @@
 {% extends 'base.html' %}
-{% block title %}ResuLynx | AI Resume Intelligence{% endblock %}
+{% block title %}ResuLynx - A Next-Gen University ATS{% endblock %}
 {% block content %}
 
-<section class="hero">
-    <div class="hero-copy">
-        <p class="eyebrow">AI resume intelligence for faster shortlists</p>
-        <h1>Rank every resume with clarity, speed, and confidence.</h1>
-        <p class="hero-text">ResuLynx turns raw resume uploads into structured skills, match scores, and readable hiring signals so teams can move from pile to priority.</p>
-        <div class="hero-actions">
-            <a href="/dashboard/" class="btn-primary">Analyze resumes</a>
-            <a href="/register/" class="btn-secondary">Create account</a>
-        </div>
-    </div>
-
-    <div class="hero-panel" aria-label="Resume scoring preview">
-        <div class="panel-header">
-            <span></span><span></span><span></span>
-        </div>
-        <div class="candidate-card top">
-            <div>
-                <strong>Senior Django Engineer</strong>
-                <p>Python, APIs, PostgreSQL</p>
+<div class="landing-page">
+    <section id="home" class="netlify-hero">
+        <div class="hero-glow hero-glow-left"></div>
+        <div class="hero-glow hero-glow-right"></div>
+        <div class="landing-container hero-center">
+            <div class="project-badge"><span></span>Final Year Engineering Project</div>
+            <h1>ResuLynx<span>.</span></h1>
+            <p>Streamlining University Hiring through AI-Powered Resume Screening</p>
+            <div class="landing-actions">
+                <a href="#demo" class="landing-btn primary">View Demo</a>
+                <a href="#contact" class="landing-btn secondary">Download Report</a>
             </div>
-            <span class="score-pill high">94</span>
-        </div>
-        <div class="candidate-card">
-            <div>
-                <strong>Product Analyst</strong>
-                <p>SQL, dashboards, hiring ops</p>
+            <div class="hero-stats">
+                <div><strong>60%</strong><span>Faster Screening</span></div>
+                <div><strong>80%</strong><span>Match Accuracy</span></div>
+                <div><strong>100%</strong><span>Academic Focus</span></div>
             </div>
-            <span class="score-pill mid">78</span>
         </div>
-        <div class="mini-chart">
-            <span style="height: 72%"></span>
-            <span style="height: 48%"></span>
-            <span style="height: 84%"></span>
-            <span style="height: 60%"></span>
-            <span style="height: 92%"></span>
-        </div>
-    </div>
-</section>
+    </section>
 
-<section class="features">
-    <div class="section-heading">
-        <p class="eyebrow">Built around the hiring workflow</p>
-        <h2>Everything useful, surfaced where recruiters need it.</h2>
-    </div>
-
-    <div class="feature-grid">
-        <div class="card">
-            <span class="feature-icon">01</span>
-            <h3>Resume Parsing</h3>
-            <p>Extract readable skills and signals from uploaded resumes without manual review.</p>
+    <section id="problem" class="landing-section muted">
+        <div class="landing-container narrow">
+            <div class="section-copy centered">
+                <h2>The Challenge in University Hiring</h2>
+                <p>Traditional hiring processes in universities are plagued with inefficiencies that slow down talent acquisition and increase administrative burden.</p>
+            </div>
+            <div class="landing-grid three">
+                <article class="landing-card danger">
+                    <span class="card-icon">01</span>
+                    <h3>Time-Consuming Manual Review</h3>
+                    <p>HR teams spend countless hours manually reviewing hundreds of resumes for each position.</p>
+                </article>
+                <article class="landing-card danger">
+                    <span class="card-icon">02</span>
+                    <h3>Inconsistent Evaluation</h3>
+                    <p>Different reviewers apply varying criteria, leading to subjective candidate assessments.</p>
+                </article>
+                <article class="landing-card danger">
+                    <span class="card-icon">03</span>
+                    <h3>Missing Qualified Candidates</h3>
+                    <p>Qualified candidates get overlooked due to format variations and keyword mismatches.</p>
+                </article>
+            </div>
+            <div class="impact-box danger">
+                <h3>The Result?</h3>
+                <p>Universities lose valuable time and talent, while qualified candidates slip through inefficient hiring processes.</p>
+            </div>
         </div>
+    </section>
 
-        <div class="card">
-            <span class="feature-icon">02</span>
-            <h3>AI Matching</h3>
-            <p>Score each profile against the qualities that matter most for the role.</p>
+    <section id="solution" class="landing-section">
+        <div class="landing-container split">
+            <div class="section-copy">
+                <span class="section-pill success">Our Solution</span>
+                <h2>Introducing ResuLynx</h2>
+                <p>A next-generation Applicant Tracking System designed for university HR departments, leveraging AI to automate and optimize the hiring workflow.</p>
+                <ul class="check-list">
+                    <li>AI-powered resume parsing and analysis</li>
+                    <li>Intelligent skill-to-role matching</li>
+                    <li>Automated candidate scoring and ranking</li>
+                    <li>Streamlined administrative workflows</li>
+                </ul>
+            </div>
+            <div class="product-preview" id="demo">
+                <div class="preview-bar"><span></span><span></span><span></span></div>
+                <div class="preview-row highlighted">
+                    <div><strong>Assistant Professor - CS</strong><small>Python, research, NLP</small></div>
+                    <b>94</b>
+                </div>
+                <div class="preview-row">
+                    <div><strong>Cloud Engineer</strong><small>AWS, Django, security</small></div>
+                    <b>86</b>
+                </div>
+                <div class="preview-meter"><span style="width: 92%"></span></div>
+                <div class="preview-meter"><span style="width: 74%"></span></div>
+                <div class="preview-meter"><span style="width: 61%"></span></div>
+            </div>
         </div>
+    </section>
 
-        <div class="card">
-            <span class="feature-icon">03</span>
-            <h3>Smart Ranking</h3>
-            <p>Compare candidates in a calm dashboard with score badges, skills, and previews.</p>
+    <section id="features" class="landing-section muted">
+        <div class="landing-container">
+            <div class="section-copy centered">
+                <h2>Powerful Features Built for Academic Excellence</h2>
+            </div>
+            <div class="landing-grid features-grid">
+                <article class="landing-card">
+                    <span class="card-icon">AI</span>
+                    <h3>AI-Powered Resume Parser</h3>
+                    <p>Advanced NLP extracts and categorizes key information from resumes in multiple formats.</p>
+                    <ul><li>99% extraction accuracy</li><li>Supports complex academic CVs</li></ul>
+                </article>
+                <article class="landing-card">
+                    <span class="card-icon">SR</span>
+                    <h3>Skill-to-Role Matching</h3>
+                    <p>Scores candidates based on role requirements, qualifications, and relevant skills.</p>
+                    <ul><li>Automated relevancy scoring</li><li>Custom matching criteria</li></ul>
+                </article>
+                <article class="landing-card">
+                    <span class="card-icon">DB</span>
+                    <h3>Custom HR Dashboard</h3>
+                    <p>Real-time insights and candidate management tools for academic hiring teams.</p>
+                    <ul><li>Candidate pipeline tracking</li><li>Collaborative review tools</li></ul>
+                </article>
+                <article class="landing-card">
+                    <span class="card-icon">SS</span>
+                    <h3>Secure Resume Storage</h3>
+                    <p>Organized, encrypted candidate document storage with easy retrieval.</p>
+                    <ul><li>GDPR-aware workflows</li><li>Advanced search capability</li></ul>
+                </article>
+                <article class="landing-card">
+                    <span class="card-icon">FL</span>
+                    <h3>Department Filtering</h3>
+                    <p>Precise candidate searches by department, role, experience, and skills.</p>
+                    <ul><li>Multi-criteria filtering</li><li>Saved search templates</li></ul>
+                </article>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <section id="workflow" class="landing-section">
+        <div class="landing-container">
+            <div class="section-copy centered">
+                <h2>How ResuLynx Works</h2>
+                <p>A streamlined 4-step process that transforms hiring efficiency.</p>
+            </div>
+            <div class="workflow-line">
+                <div><span>1</span><h3>Upload Resume</h3><p>Candidates or HR teams upload resumes through an intuitive interface.</p></div>
+                <div><span>2</span><h3>Parse Skills</h3><p>AI algorithms extract information, skills, and qualifications.</p></div>
+                <div><span>3</span><h3>Score Candidates</h3><p>The system ranks applicants based on role requirements.</p></div>
+                <div><span>4</span><h3>Review Dashboard</h3><p>HR teams review ranked candidates in a focused dashboard.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tech" class="landing-section muted">
+        <div class="landing-container">
+            <div class="section-copy centered">
+                <h2>Built with Modern Technology</h2>
+                <p>Enterprise-grade technologies for scalability, security, and performance.</p>
+            </div>
+            <div class="tech-grid">
+                <div><strong>Django</strong><span>Backend Framework</span></div>
+                <div><strong>Python</strong><span>Core Language</span></div>
+                <div><strong>spaCy</strong><span>NLP Processing</span></div>
+                <div><strong>AWS</strong><span>Cloud Infrastructure</span></div>
+                <div><strong>PostgreSQL</strong><span>Database</span></div>
+                <div><strong>Bootstrap</strong><span>Frontend Framework</span></div>
+            </div>
+            <div class="architecture-box">
+                <h3>System Architecture</h3>
+                <div class="landing-grid three">
+                    <div><h4>Frontend</h4><p>Responsive interface and interactive dashboards.</p></div>
+                    <div><h4>Backend</h4><p>Django APIs, business logic, and secure workflows.</p></div>
+                    <div><h4>Infrastructure</h4><p>Cloud hosting, PostgreSQL, and NLP processing.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="landing-section">
+        <div class="landing-container narrow">
+            <div class="section-copy centered">
+                <h2>Meet the Developers</h2>
+                <p>Final-year engineering students passionate about solving real-world problems.</p>
+            </div>
+            <div class="landing-grid two">
+                <article class="team-card">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face" alt="Shambhav Chhetri">
+                    <h3>Shambhav Chhetri</h3>
+                    <span>Cloud Computing</span>
+                    <p>Led the infrastructure and deployment strategy for ResuLynx.</p>
+                </article>
+                <article class="team-card">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face" alt="Rohit Mehta">
+                    <h3>Rohit Mehta</h3>
+                    <span>Cybersecurity</span>
+                    <p>Ensured ResuLynx meets application security and data protection standards.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="metrics" class="landing-section muted">
+        <div class="landing-container">
+            <div class="section-copy centered">
+                <h2>Project Impact & Performance</h2>
+            </div>
+            <div class="landing-grid three">
+                <div class="metric-card"><strong>60%</strong><h3>Reduces Resume Screening Time</h3><p>Automated processing speeds up initial candidate review.</p></div>
+                <div class="metric-card"><strong>80%</strong><h3>Achieves Skill Match Accuracy</h3><p>AI-powered matching delivers candidate-role alignment.</p></div>
+                <div class="metric-card"><strong>100%</strong><h3>Built for Academic Hiring</h3><p>Designed for university HR departments and academic roles.</p></div>
+            </div>
+            <div class="benchmark-box">
+                <h3>Performance Benchmarks</h3>
+                <div class="benchmark-grid">
+                    <div><strong>2.3x</strong><span>Faster Processing</span></div>
+                    <div><strong>95%</strong><span>HR Satisfaction</span></div>
+                    <div><strong>1,500+</strong><span>Resumes Processed</span></div>
+                    <div><strong>0.1%</strong><span>Error Rate</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="landing-section">
+        <div class="landing-container narrow">
+            <div class="section-copy centered">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-list">
+                <details open><summary>How does ResuLynx differ from existing ATS platforms?</summary><p>ResuLynx is designed for university hiring needs, with AI parsing optimized for academic CVs, research experience, and educational qualifications.</p></details>
+                <details><summary>Can ResuLynx scale for large university systems?</summary><p>Yes. The modular Django architecture and cloud-ready deployment can support high application volumes.</p></details>
+                <details><summary>What security measures are in place for candidate data?</summary><p>ResuLynx supports secure storage patterns, role-aware workflows, and privacy-minded candidate data handling.</p></details>
+                <details><summary>What are future development plans?</summary><p>Future scope includes interview integrations, advanced analytics, mobile workflows, and AI-powered candidate communication.</p></details>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="landing-section muted">
+        <div class="landing-container split">
+            <div class="contact-card">
+                <h2>Get in Touch</h2>
+                <p>Interested in learning more about ResuLynx? We would love to hear from you.</p>
+                <div class="contact-line"><strong>Email</strong><span>shambhavchhetri@xyz.edu</span></div>
+                <div class="contact-line"><strong>University</strong><span>Computer Science Department</span></div>
+                <div class="contact-line"><strong>Availability</strong><span>Mon-Fri, 9AM-5PM</span></div>
+            </div>
+            <form class="contact-form" method="post" action="/dashboard/" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label>Full Name<input type="text" name="name" placeholder="Enter your full name"></label>
+                <label>Email Address<input type="email" name="email" placeholder="Enter your email address"></label>
+                <label>Upload Resume<input type="file" name="file" accept=".pdf,.doc,.docx"></label>
+                <label>Message<textarea name="message" rows="5" placeholder="Tell us about your interest in ResuLynx"></textarea></label>
+                <button class="landing-btn primary" type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="landing-footer">
+        <div class="landing-container footer-grid">
+            <div>
+                <div class="footer-logo"><span>RL</span>ResuLynx</div>
+                <p>A next-generation ATS designed for university HR departments, leveraging AI to streamline hiring and improve candidate selection.</p>
+            </div>
+            <div><h3>Project</h3><a href="#demo">Demo</a><a href="#features">Features</a><a href="#tech">Tech Stack</a></div>
+            <div><h3>Resources</h3><a href="#team">Meet the Team</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div>
+        </div>
+        <div class="footer-bottom">ResuLynx. Final Year Engineering Project. Shambhav Chhetri • Rohit Mehta • Computer Science Department</div>
+    </footer>
+</div>
 
 {% endblock %}
