@@ -11,11 +11,16 @@ def home(request):
 
 
 def register(request):
-    form = RegisterForm(request.POST or None)
-    if form.is_valid():
-        user = form.save()
-        login(request, user)
+    if request.user.is_authenticated:
         return redirect('dashboard')
+
+    form = RegisterForm()
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('dashboard')
     return render(request, 'register.html', {'form': form})
 
 

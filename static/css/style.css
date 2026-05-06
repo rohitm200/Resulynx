@@ -534,12 +534,14 @@ th {
 }
 
 .input-group,
-.stacked-form p {
+.stacked-form p,
+.form-field {
     margin: 0 0 18px;
 }
 
 .input-group label,
-.stacked-form label {
+.stacked-form label,
+.form-field label {
     display: block;
     margin-bottom: 8px;
     color: var(--ink);
@@ -548,7 +550,8 @@ th {
 }
 
 .input-group input,
-.stacked-form input {
+.stacked-form input,
+.form-field input {
     width: 100%;
     min-height: 46px;
     padding: 12px 13px;
@@ -560,7 +563,8 @@ th {
 }
 
 .input-group input:focus,
-.stacked-form input:focus {
+.stacked-form input:focus,
+.form-field input:focus {
     border-color: var(--teal);
     box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.14);
     outline: none;
@@ -589,6 +593,32 @@ th {
 
 .stacked-form ul {
     padding-left: 18px;
+}
+
+.form-errors,
+.field-errors {
+    margin: 8px 0 0;
+    padding: 10px 12px;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    background: #fef2f2;
+    color: #991b1b;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.field-errors ul,
+.form-errors ul {
+    margin: 0;
+    padding-left: 18px;
+}
+
+.form-field small {
+    display: block;
+    margin-top: 7px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
 }
 
 @media (max-width: 900px) {
